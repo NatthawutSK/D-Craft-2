@@ -9,6 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vuepic/vue-datepicker": "^9.0.2",
+    "dayjs": "^1.11.13",
+    "vue-multiselect": "^3.0.0-beta.3",
+    "feather-icons": "^4.28.0",
     "frappe-ui": "^0.1.60",
     "lodash": "^4.17.21",
     "vue": "^3.4.37",

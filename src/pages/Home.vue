@@ -138,7 +138,10 @@ const userId = getCookie('user_id');
                     </div>
                 </div>
             </div>
-
+            <button @click="goCreate"
+                class="px-4 py-2 bg-green-500 text-white rounded shadow hover:bg-green-600 transition-colors duration-300">
+                สร้างงานใหม่
+            </button>
         </div>
 
         <div v-if="activeTab" :key="activeTab" class="flex-grow overflow-y-auto mt-4">
