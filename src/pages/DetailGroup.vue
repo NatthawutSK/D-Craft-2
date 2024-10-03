@@ -122,9 +122,8 @@ const calculateTotalPrice = (groupData) => {
                 </button>
             </li>
         </ul>
-        <Button @click="handleFormSubmit"
-            class="bg-indigo-600 text-white px-4 py-2  rounded-md hover:bg-indigo-700 w-full"
+        <button @click="handleFormSubmit" class="bg-blue-700 text-white px-4 py-2  rounded-md hover:bg-blue-500 w-full"
             :data-testid="'button-submit-group'">
-            รับงานทั้งหมด</Button>
+            รับงานทั้งหมด</button>
     </div>
 </template>

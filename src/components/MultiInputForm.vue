@@ -3,16 +3,17 @@
         <div v-for="field in fields" :key="field.fieldName">
             <!-- Image Field -->
             <div v-if="field.type === 'image'">
-                <label :for="field.label" class="block text-xl font-medium text-gray-700">{{ field.label }}</label>
+                <label :for="field.label" class="block mb-2 text-md font-medium text-gray-700">{{ field.label }}</label>
                 <FileUploader v-if="!field.nonEdit" :accept="'image/*'" :data-field-name="field.fieldName"
                     :data-testid="'input-' + field.fieldName" @success="(file) => handleFile(file, field.fieldName)"
                     @error="handleError" class="w-full">
                     <template v-slot="{ openFileSelector, uploading, progress }">
                         <div>
-                            <Button @click="openFileSelector" :loading="uploading"
-                                :data-testid="'button-' + field.fieldName">
+                            <button @click="openFileSelector" :loading="uploading"
+                                :data-testid="'button-' + field.fieldName"
+                                class="px-3 py-1 border border-black text-black text-sm rounded hover:bg-black hover:text-white focus:outline-none focus:ring-1 focus:ring-gray-500 disabled:opacity-50">
                                 {{ uploading ? `Uploading ${progress}%` : 'Upload Image' }}
-                            </Button>
+                            </button>
                         </div>
                     </template>
                 </FileUploader>
@@ -26,19 +27,19 @@
 
             <!-- Date and Datetime Fields -->
             <div v-else-if="field.type === 'datetime'">
-                <label :for="field.label" class="block text-xl font-medium text-gray-700">{{ field.label }}</label>
+                <label :for="field.label" class="mb-2 block text-md font-medium text-gray-700">{{ field.label }}</label>
                 <VueDatePicker v-model="formData[field.fieldName]" text-input
                     :data-testid="'input-' + field.fieldName" />
             </div>
             <div v-else-if="field.type === 'date'">
-                <label :for="field.label" class="block text-xl font-medium text-gray-700">{{ field.label }}</label>
+                <label :for="field.label" class="block mb-2 text-md font-medium text-gray-700">{{ field.label }}</label>
                 <VueDatePicker v-model="formData[field.fieldName]" :enable-time-picker="false" text-input
                     :data-testid="'input-' + field.fieldName" />
             </div>
 
             <!-- Password Field with Show/Hide Toggle and Styled Input -->
             <div v-else-if="field.fieldName === 'password'" class="relative">
-                <label :for="field.label" class="block text-xl font-medium text-gray-700">{{ field.label }}</label>
+                <label :for="field.label" class="block mb-2 text-md font-medium text-gray-700">{{ field.label }}</label>
                 <div class="relative">
                     <input :type="field.showPassword ? 'text' : 'password'" v-model="formData[field.fieldName]"
                         :id="field.fieldName" :placeholder="field.label" :disabled="field.nonEdit"
@@ -55,7 +56,7 @@
 
             <!-- Multiselect Fields -->
             <div v-else-if="field.type === 'multiselect'">
-                <label :for="field.label" class="block text-xl font-medium text-gray-700">{{ field.label }}</label>
+                <label :for="field.label" class="block mb-2 text-md font-medium text-gray-700">{{ field.label }}</label>
                 <Multiselect v-model="formData[field.fieldName]" :options="field.options" :multiple="true"
                     :searchable="false" :taggable="true" @tag="newTag => formData[field.fieldName].push(newTag)"
                     :data-testid="'input-' + field.fieldName" />
@@ -63,7 +64,7 @@
 
             <!-- Select Fields -->
             <div v-else-if="field.type === 'select'">
-                <label :for="field.label" class="block text-xl font-medium text-gray-700">{{ field.label }}</label>
+                <label :for="field.label" class="block mb-2 text-md font-medium text-gray-700">{{ field.label }}</label>
                 <Multiselect v-model="formData[field.fieldName]" :options="field.options" :multiple="false"
                     openDirection="bottom" placeholder="Select an option" :searchable="false"
                     :data-testid="'input-' + field.fieldName" />
@@ -74,11 +75,11 @@
                 :placeholder="field.label" :fieldName="field.fieldName" :nonEdit="field.nonEdit"
                 :options="field.options || []" :data-testid="'input-' + field.fieldName" />
         </div>
-        <Button v-if="IsButtonShow[status] !== false" @click="handleSubmit"
+        <button v-if="IsButtonShow[status] !== false" @click="handleSubmit"
             class="bg-blue-700 text-white px-4 py-2  rounded-md hover:bg-blue-500 w-full"
             :data-testid="'button-submit'">
             {{ ButtonLabel[status] || "บันทึก" }}
-        </Button>
+        </button>
     </div>
 </template>
 
@@ -86,7 +87,7 @@
 import { ref } from 'vue';
 import ReusableInput from './ReusableInput.vue';
 import Multiselect from 'vue-multiselect';
-import { Button, FileUploader } from 'frappe-ui';
+import { FileUploader } from 'frappe-ui';
 import dayjs from 'dayjs';
 import { ButtonLabel, IsButtonShow } from '../data/mapData';
 

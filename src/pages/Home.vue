@@ -152,7 +152,7 @@ const userId = getCookie('user_id');
                         <div v-if="entry.group_data" :data-group-id="entry.group_id">
                             <div class="font-bold">กลุ่ม: {{ entry.group_id }}</div>
                             <div class=" text-gray-500">จำนวนงาน: {{ entry.group_length }}</div>
-                            <div v-for="(value, key) in entry.group_data[0]" :key="key" class="flex items-center mt-2">
+                            <div v-for="(value, key) in entry.group_data[0]" :key="key" class="flex items-center mt-1">
                                 <span class="font-bold">{{ mapLabel(key) }}:</span>
                                 <span class="text-gray-500 ml-2">
                                     <span v-if="Array.isArray(value)">
@@ -174,7 +174,7 @@ const userId = getCookie('user_id');
                         </div>
                         <div v-else :data-task-id="entry.core_id">
                             <div class="font-bold">{{ entry.task }}</div>
-                            <div class="text-sm text-gray-500">สถานะ: {{ MapStatus[entry.status] }}</div>
+                            <div class="text-gray-500">สถานะ: {{ MapStatus[entry.status] }}</div>
                             <div class="font-bold">รหัสงาน: {{ entry.core_id }}</div>
                             <div v-if="entry.prev_data" class="mt-2">
                                 <div v-for="(value, key) in entry.prev_data" :key="key" class="flex items-center">

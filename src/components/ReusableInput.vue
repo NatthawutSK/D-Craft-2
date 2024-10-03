@@ -61,13 +61,13 @@ watch(() => props.modelValue, (newValue) => {
 </script>
 <template>
     <div class="mb-4">
-        <label :for="fieldName" class="block text-xl font-medium text-gray-700">
+        <label :for="fieldName" class="block text-md font-medium text-gray-700">
             {{ label }}
         </label>
         <!-- Conditional rendering for input or textarea -->
         <input v-if="type !== 'textarea'" v-model="inputValue" :id="fieldName" :type="type" :placeholder="placeholder"
             :disabled="nonEdit" :data-testid="dataTestId" :class="{
-                'mt-1 block rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm': true,
+                'mt-1 block rounded-sm border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm': true,
                 ' w-full': type !== 'checkbox'
             }" />
         <textarea v-else v-model="inputValue" :id="fieldName" :placeholder="placeholder" :disabled="nonEdit"
